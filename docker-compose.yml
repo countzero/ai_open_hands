@@ -15,22 +15,19 @@ services:
       - LOG_ALL_EVENTS=true
 
     volumes:
-      - ${PWD}/.openhands:.openhands
+      - ${PWD}/.openhands:/.openhands
       - /var/run/docker.sock:/var/run/docker.sock
-
-    ports:
-      - "3000:3000"
 
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
-    # healthcheck:
-    #   test: ["CMD", "curl", "--output", "/dev/null", "--fail", "http://localhost:8080"]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 3
-    #   start_period: 30s
-    #   start_interval: 5s
+    healthcheck:
+      test: ["CMD", "curl", "--output", "/dev/null", "--fail", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+      start_interval: 5s
 
     stop_grace_period: 5s
 
@@ -44,7 +41,6 @@ volumes:
 
   ai-open-hands-data:
     name: ai-open-hands-data
-
 
 networks:
 

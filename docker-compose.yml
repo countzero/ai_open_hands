@@ -1,0 +1,58 @@
+name: ai_open_hands
+
+services:
+
+  open-hands:
+
+    pull_policy: missing
+
+    image: docker.all-hands.dev/all-hands-ai/openhands:0.48
+
+    container_name: open-hands
+
+    environment:
+      - SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.48-nikolaik
+      - LOG_ALL_EVENTS=true
+
+    volumes:
+      - ${PWD}/.openhands:.openhands
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    ports:
+      - "3000:3000"
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    # healthcheck:
+    #   test: ["CMD", "curl", "--output", "/dev/null", "--fail", "http://localhost:8080"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 3
+    #   start_period: 30s
+    #   start_interval: 5s
+
+    stop_grace_period: 5s
+
+    restart: unless-stopped
+
+    networks:
+      ai-open-hands-network:
+        ipv4_address: 10.10.4.2
+
+volumes:
+
+  ai-open-hands-data:
+    name: ai-open-hands-data
+
+
+networks:
+
+  # This network ranges from 10.10.4.0 to 10.10.4.255 (CIDR) because we
+  # are not expecting more than 253 containers in this project scope.
+  # Note: By convention the usable IPs are 10.10.4.2 to 10.10.4.254.
+  ai-open-hands-network:
+    name: ai-open-hands-network
+    ipam:
+      config:
+        - subnet: 10.10.4.0/24

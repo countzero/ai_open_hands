@@ -12,10 +12,11 @@ services:
 
     environment:
       - SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.48-nikolaik
+      - SANDBOX_VOLUMES=${PWD}/shared_workspace/workspace:/workspace:rw
       - LOG_ALL_EVENTS=true
 
     volumes:
-      - ${PWD}/.openhands:/.openhands
+      - ${PWD}/shared_workspace/.openhands:/.openhands
       - /var/run/docker.sock:/var/run/docker.sock
 
     extra_hosts:

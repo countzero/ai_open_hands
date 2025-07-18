@@ -8,7 +8,7 @@ The following programs are required to use this repository:
 
 1. Docker
 2. Git
-3. Local OpenAI compatiable AI like llama.cpp or ollama
+3. Local OpenAI compatible AI like `llama.cpp` or `ollama`
 
 ## Installation
 
@@ -26,7 +26,7 @@ Download a quantized version of the [Devstral-Small-2507](https://huggingface.co
 
 ## Usage
 
-### Start llm
+### Start LLM
 
 Start the `Devstral-Small-2507` model and note the `Base URL` of the OpenAI API. e.g. `http://10.0.2.2:8080/v1`
 
@@ -44,13 +44,11 @@ The OpenHands GUI should become available at:
 
 * http://10.10.4.2:3000
 
-
 ### Configure OpenHands
 
 Make sure the `Base URL` is set to your local LLM:
 
 * http://10.10.4.2:3000/settings
-
 
 ### Collaborate with the AI
 

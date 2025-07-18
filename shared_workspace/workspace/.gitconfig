@@ -1,9 +1,0 @@
-# This configuration overrides global settings
-# for all repositories within this directory.
-
-[user]
-    name = Finn Kumkar
-    email = finn.kumkar@gmail.com
-
-[safe]
-    directory = *

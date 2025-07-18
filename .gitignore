@@ -4,3 +4,13 @@
 
 # Ignore Sublime Text files.
 *.sublime-workspace
+
+# We are ignoring all session specific data in the
+# shared '.openhands' directory to keep it clean.
+shared_workspace/.openhands/*
+!shared_workspace/.openhands/settings.json
+
+# We are ignoring all generated data in the shared
+# 'workspace' directory to keep this repository clean.
+shared_workspace/workspace/*
+!shared_workspace/workspace/AUTHORS

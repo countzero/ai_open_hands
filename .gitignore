@@ -9,6 +9,7 @@
 # shared '.openhands' directory to keep it clean.
 shared_workspace/.openhands/*
 !shared_workspace/.openhands/settings.json
+!shared_workspace/.openhands/config.toml
 
 # We are ignoring all generated data in the shared
 # 'workspace' directory to keep this repository clean.
